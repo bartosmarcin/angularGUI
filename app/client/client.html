@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app="client">
+<head>
+    <link rel="stylesheet" type="text/css" href="/app/bootstrap.min.css"/>
+    <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="/app/app.js"></script>
+    <script type="text/javascript" src="client.js"></script>
+
+</head>
+<body ng-controller="ClientsOrdersListCtrl as ordersList">
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+        <ul class="nav nav-pills">
+            <li class="active"><a href="#">Moje Zamówienia</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Messages</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+<div>
+    <h1>Zamówienia:</h1>
+
+    <div class="panel panel-primary" ng-repeat="order in ordersList.orders">
+        <div class="panel-heading btn-block" ng-click="order.show = ! order.show">
+            {{order.date}} ||
+            {{order.client.firstName}} {{order.client.lastName}}
+        </div>
+        <div class="panel-body" ng-show="order.show">
+            <h1>Zamówione produkty:</h1>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Nazwa produktu</th>
+                    <th>Dostępność</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="article in order.articles">
+                    <td>{{article.name}}</td>
+                    <td>{{article.availability}}</td>
+                </tr>
+                </tbody>
+            </table>
+            <button type="button" class="btn btn-primary" ng-show="order.problems.length > 0" ng-click="order.showProblem = true">Podejmij decyzje</button>
+            <div ng-show="order.showProblem">
+                <h3>Problemy z zamówieniem:</h3>
+
+                <div ng-repeat="problem in order.problems">
+                    {{problem.name}} - {{problem.description}}
+                </div>
+                <button type="button" class="btn btn-success">Akceptuj</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
