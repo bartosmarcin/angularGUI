@@ -7,11 +7,11 @@
     <script type="text/javascript" src="ordersManagement.js"></script>
 
 </head>
-<body>
+<body ng-controller="OrdersListCtrl as ordersList">
 <nav class="navbar navbar-default navbar-static-top" role="navigation">
     <div class="container">
         <ul class="nav nav-pills">
-            <li class="active"><a href="#">Home</a></li>
+            <li class="active"><a href="#">Zamówienia</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">Messages</a></li>
         </ul>
@@ -19,18 +19,35 @@
 </nav>
 
 
-<div ng-controller="OrdersListCtrl as ordersList">
+<div>
     <h1>Zamówienia:</h1>
 
-    <div ng-repeat="order in ordersList.orders">
-        {{order.id}} : {{order.name}}
-    </div>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Panel title</h3>
+    <div class="panel panel-primary" ng-repeat="order in ordersList.orders">
+        <div class="panel-heading btn-block" ng-click="order.show = ! order.show">
+
+            <h3 class="panel-title">
+                {{order.date}} ||
+                {{order.client.firstName}} {{order.client.lastName}}
+
+            </h3>
+
         </div>
-        <div class="panel-body">
-            Panel content
+        <div class="panel-body" ng-show="order.show">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Nazwa produktu</th>
+                    <th>Dostępność</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="article in order.articles">
+                    <td>{{article.name}}</td>
+                    <td>{{article.availability}}</td>
+                </tr>
+                </tbody>
+            </table>
+            <button type="button" class="btn btn-primary">Zarezerwuj</button>
         </div>
     </div>
 </div>
