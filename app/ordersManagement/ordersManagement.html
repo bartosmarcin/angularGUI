@@ -1,1 +1,38 @@
-<p>This is the partial for view 1.</p>
+<!DOCTYPE html>
+<html ng-app="ordersManagement">
+<head>
+    <link rel="stylesheet" type="text/css" href="/app/bootstrap.min.css"/>
+    <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="/app/app.js"></script>
+    <script type="text/javascript" src="ordersManagement.js"></script>
+
+</head>
+<body>
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+        <ul class="nav nav-pills">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Messages</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+<div ng-controller="OrdersListCtrl as ordersList">
+    <h1>Zamówienia:</h1>
+
+    <div ng-repeat="order in ordersList.orders">
+        {{order.id}} : {{order.name}}
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Panel title</h3>
+        </div>
+        <div class="panel-body">
+            Panel content
+        </div>
+    </div>
+</div>
+</body>
+</html>

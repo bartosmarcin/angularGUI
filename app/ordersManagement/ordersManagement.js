@@ -1,14 +1,23 @@
 'use strict';
+(function () {
+    var app = angular.module('ordersManagement', []);
 
-angular.module('myApp.view1', ['ngRoute'])
+    app.controller('OrdersListCtrl', [function () {
+        this.orders = orders;
+    }]);
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/view1', {
-    templateUrl: 'view1/view1.html',
-    controller: 'View1Ctrl'
-  });
-}])
+    app.controller('OrderCtrl', [function(){
 
-.controller('View1Ctrl', [function() {
+    }]);
 
-}]);
+    var orders = [
+        {
+            id:1,
+            name:"trololo"
+        },
+        {
+            id:2,
+            name:"nazwa zamówienia"
+        }
+    ];
+})();
