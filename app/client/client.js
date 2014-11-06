@@ -1,10 +1,35 @@
 'use strict';
 (function () {
-    var app = angular.module('client', []);
+    var app = angular.module('client', ['ngRoute']);
 
-    app.controller('ClientsOrdersListCtrl', [function () {
-        this.orders = [order1, order2];
+    app.controller('ClientsOrdersListCtrl', ['$scope', function () {
+       //TODO ws communication
     }]);
+
+    app.controller('HeaderCtrl', ['$scope',function ($scope, $location) {
+        this.tabs=[
+            {title:"Moje Zamówienia"},
+            {title:"Zamówienie"}
+        ]
+    }]);
+
+    app.config(['$routeProvider',
+        function($routeProvider) {
+            $routeProvider.
+                when('/orders', {
+                    templateUrl: 'clientOrders.html',
+                    controller: 'ClientsOrdersListCtrl'
+                }).
+                when("/orders/:orderId",{
+                    templateUrl: 'clientOrder.html',
+                    controller: 'ClientsOrdersListCtrl'
+                }).
+                otherwise({
+                    redirectTo: '/orders'
+                });
+        }]);
+
+
 
 
     var order2 = {

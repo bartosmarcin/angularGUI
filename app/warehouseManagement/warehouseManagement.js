@@ -2,6 +2,18 @@
 (function () {
     var app = angular.module('warehouseManagement', []);
 
+    app.config(['$routeProvider',
+        function($routeProvider) {
+            $routeProvider.
+                when('/orders', {
+                    templateUrl: 'warehouseManagement.html',
+                    controller: 'WarehouseOrdersListCtrl'
+                }).
+                otherwise({
+                    redirectTo: '/orders'
+                });
+        }]);
+
     app.controller('WarehouseOrdersListCtrl',['$scope', function($scope){
         this.orders = [order1, order2];
 

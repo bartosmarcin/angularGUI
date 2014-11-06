@@ -1,0 +1,36 @@
+<h1>Zamówienia:</h1>
+
+<div class="panel panel-primary" ng-repeat="order in orders">
+    <div class="panel-heading btn-block" ng-click="order.show = ! order.show">
+        {{order.date}} ||
+        {{order.client.firstName}} {{order.client.lastName}}
+    </div>
+    <div class="panel-body" ng-show="order.show">
+        <h1>Zamówione produkty:</h1>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Nazwa produktu</th>
+                <th>Dostępność</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="article in order.articles">
+                <td>{{article.name}}</td>
+                <td>{{article.availability}}</td>
+            </tr>
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-primary" ng-show="order.problems.length > 0"
+                ng-click="order.showProblem = true">Podejmij decyzje
+        </button>
+        <div ng-show="order.showProblem">
+            <h3>Problemy z zamówieniem:</h3>
+
+            <div ng-repeat="problem in order.problems">
+                {{problem.name}} - {{problem.description}}
+            </div>
+            <button type="button" class="btn btn-success">Akceptuj</button>
+        </div>
+    </div>
+</div>

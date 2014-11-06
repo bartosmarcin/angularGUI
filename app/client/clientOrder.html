@@ -1,0 +1,15 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th>Nazwa produktu</th>
+        <th>Dostępność</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="article in orders[0].articles">
+        <td>{{article.name}}</td>
+        <td>{{article.availability}}</td>
+    </tr>
+    </tbody>
+</table>
+<button type="button" class="btn btn-success">Akceptuj zamówienie</button>
