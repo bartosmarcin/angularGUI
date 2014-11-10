@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="ordersManagement">
+<html ng-app="myApp">
 <head>
     <link rel="stylesheet" type="text/css" href="bootstrap.min.css"/>
     <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
@@ -15,21 +15,6 @@
         </ul>
     </div>
 </nav>
-
-<div ng-controller="OrdersListCtrl as ordersList">
-    <h1>Zamówienia:</h1>
-
-    <div ng-repeat="order in ordersList.orders">
-        {{order.id}} : {{order.name}}
-    </div>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Panel title</h3>
-        </div>
-        <div class="panel-body">
-            Panel content
-        </div>
-    </div>
-</div>
+<ng-view></ng-view>
 </body>
 </html>
