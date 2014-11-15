@@ -1,0 +1,38 @@
+<div class="page-header">
+    <h1>Zamówienie:</h1>
+</div>
+
+<div class="row">
+    <div class="col-sm-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Szczegóły zamówienia</h3>
+            </div>
+            <div class="panel-body">
+                Data złożenia: {{order.date}}<br>
+                Status: {{getStatus(order.status)}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Artykuł</th>
+                <th>Ilość</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in order.items">
+                <td>{{$index + 1}}</td>
+                <td>{{item.article.name}}</td>
+                <td>{{item.count}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
