@@ -20,7 +20,8 @@ app.config(['$routeProvider', '$locationProvider',
                 controller: 'ClientCtrl'
             }).
             when('/client/place-order', {
-                templateUrl: '/app/partials/place-order.html'
+                templateUrl: '/app/partials/place-order.html',
+                controller: 'NewOrderCtrl'
             }).
             when('/client/orders', {
                 templateUrl: '/app/partials/orders.html',

@@ -1,0 +1,44 @@
+<div class="page-header">
+    <h1>Złóż zamówienie</h1>
+</div>
+<div class="alert alert-success" role="alert" ng-show="successMsg">Złożono zamówienie</div>
+<div class="row">
+    <div class="col-md-6">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Artykuł</th>
+                <th>Ilość</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td></td>
+                <td>
+                    <select ng-model="item.article"
+                            ng-options="article.name for article in articles"
+                            ng-init="item.article = articles[0]"></select>
+                </td>
+                <td>
+                    <input value="1" type="number" min="1" ng-model="item.count">
+                </td>
+                <td>
+                    <button class="btn btn-default" ng-click="save()">Dodaj</button>
+                </td>
+            </tr>
+            <tr ng-repeat="item in neworder.items">
+                <td>{{$index + 1}}</td>
+                <td>{{item.article.name}}</td>
+                <td>{{item.count}}</td>
+                <td><span class="glyphicon glyphicon glyphicon-remove"
+                          aria-hidden="true"
+                          ng-click="remove($index)"
+                          style="cursor: hand;cursor: pointer;"></span></td>
+            </tr>
+            </tbody>
+        </table>
+        <button class="btn btn-primary" ng-click="placeOrder()" ng-if="neworder.items.length != 0">Złóż zamówienie</button>
+    </div>
+</div>
